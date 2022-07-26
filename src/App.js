@@ -6,6 +6,7 @@ function App() {
 	const [buttonColor, setColor] = useState("red");
 	const texChange = buttonColor === "red" ? "blue" : "red";
 	const [disabled, setDisabled] = useState(false);
+
 	return (
 		<div>
 			<button
@@ -23,7 +24,8 @@ function App() {
 				aria-checked={disabled} //this is for accessibility
 				onClick={(e) => setDisabled(e.target.checked)} //e.target refers to input checkbox
 				// e.target.checked will provide the checked boolean value.
-			/>			
+				onChange={() => setColor(disabled === false ? "grey" : "red")}
+			/>
 			<label htmlFor="chekBoxToDisableButton">
 				click to disable the button
 			</label>
