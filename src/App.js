@@ -2,6 +2,10 @@ import "./App.css";
 
 import { useState } from "react";
 
+export function camelCaseLettersToSpaces(colorName) {
+	return colorName.replace(/\B([A-Z])\B/g, " $1");
+}
+
 function App() {
 	const [buttonColor, setColor] = useState("red");
 	const texChange = buttonColor === "red" ? "blue" : "red";

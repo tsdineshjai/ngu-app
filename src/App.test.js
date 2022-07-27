@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
+import { camelCaseLettersToSpaces } from "./App";
 
 test("button has correct initial color", () => {
 	render(<App />); //find a element that is a button and has a text "Change to blue"
@@ -79,4 +80,23 @@ test("button when clicked changes to blue , then disable by clicking checkbox, e
 	//enablign the button
 	fireEvent.click(checkbox);
 	expect(colorButton).toHaveStyle({ backgroundColor: "blue" });
+});
+
+//describe function is to group more test cases
+//we can write more global tests ie test() function
+
+describe("spaces before camelcase Letters", () => {
+	test("works for no inner capital letters", () => {
+		expect(camelCaseLettersToSpaces("Red")).toBe("Red");
+	});
+
+	test("works for one inner capital letter", () => {
+		expect(camelCaseLettersToSpaces("MidnightBlue")).toBe("Midnight Blue");
+	});
+
+	test("works for more than one inner capital letter", () => {
+		expect(camelCaseLettersToSpaces("MediumVioletRed")).toBe(
+			"Medium Violet Red"
+		);
+	});
 });
